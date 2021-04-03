@@ -68,7 +68,7 @@ namespace PhilosophersConsoleApp.Model
 			Thread.Sleep(Random.Next(MAX_THINKING_TIME));
 		}
 
-		public void PickLeft()
+		public void PickLeftChopstick()
 		{
 			Console.WriteLine($"{PrintOffset}| {this.Id}: Waiting		|");
 
@@ -82,7 +82,7 @@ namespace PhilosophersConsoleApp.Model
 			}
 		}
 
-		public void PickRight()
+		public void PickRightChopstick()
 		{
 			if (RightMutex.WaitOne(MAX_WATING_TIME))
 			{
