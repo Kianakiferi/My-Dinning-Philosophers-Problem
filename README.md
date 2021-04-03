@@ -1,5 +1,6 @@
-# My-Dinning-Philosophers-Problem
-My Dinning Philosophers Problem, C#, .NET 5.0
+# My-Dinning-Philosophers-Problem 
+
+My Dinning Philosophers Problem, C#, .NET 5.0, GNU 3.0
 
 ## How to Use  
 
@@ -25,9 +26,14 @@ in the /src/Philosopher.cs
 
 
 
-### Wanna to change the number of they dinning?
+### Wanna to change the number of they dinning? 
+
 - See the
 ``` C#
 public static readonly int DAYTIME = 2;
 ```
 at the beginning of the /src/Program.cs
+
+# License 
+
+GNU General Public License v3.0
