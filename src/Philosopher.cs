@@ -24,7 +24,9 @@ namespace PhilosophersConsoleApp.Model
 
 		public int RightMutexIndex;
 		public Mutex RightMutex;
-
+		
+		private bool IsBothHandsWithaChopstick;
+		
 		#region CTOR
 		public Philosopher(string name)
 		{
@@ -85,6 +87,7 @@ namespace PhilosophersConsoleApp.Model
 			if (RightMutex.WaitOne(MAX_WATING_TIME))
 			{
 				Console.WriteLine($"{PrintOffset}| {this.Id}: Got right {RightMutexIndex}	|");
+				IsBothHandsWithaChopstick = true;
 			}
 			else
 			{
@@ -94,8 +97,11 @@ namespace PhilosophersConsoleApp.Model
 
 		public void Eat()
 		{
-			Console.WriteLine($"{PrintOffset}| {this.Id}: Eating		|");
-			Thread.Sleep(Random.Next(MAX_EATING_TIME));
+			if (IsBothHandsWithaChopstick)
+			{
+				Console.WriteLine($"{PrintOffset}| {this.Id}: Eating		|");
+				Thread.Sleep(Random.Next(MAX_EATING_TIME));
+			}
 		}
 
 		public void Release()
@@ -119,6 +125,8 @@ namespace PhilosophersConsoleApp.Model
 			{
 
 			}
+			
+			IsBothHandsWithaChopstick = false;
 		}
 		#endregion
 	}
