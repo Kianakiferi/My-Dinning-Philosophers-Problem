@@ -67,8 +67,8 @@ namespace PhilosophersConsoleApp
 				
 				for (int i = 0; i < DAYTIME; i++)
 				{
-					philosopher.PickLeft();
-					philosopher.PickRight();
+					philosopher.PickLeftChopstick();
+					philosopher.PickRightChopstick();
 					philosopher.Eat();
 					philosopher.Release();
 					philosopher.Think();
