@@ -5,12 +5,12 @@ namespace PhilosophersConsoleApp.Model
 {
 	class Philosopher
 	{
-		public const int MAX_THINKING_TIME = 2000;
-		public const int MAX_EATING_TIME = 500;
+		private const int MAX_THINKING_TIME = 2000;
+		private const int MAX_EATING_TIME = 500;
 
-		public const int MAX_WATING_TIME = 4000;
+		private const int MAX_WATING_TIME = 4000;
 
-		public const int MAX_CHOPSTICKS = 5;
+		private const int MAX_CHOPSTICKS = 5;
 
 		private Random Random = new();
 		private static int GenericId = 0;
