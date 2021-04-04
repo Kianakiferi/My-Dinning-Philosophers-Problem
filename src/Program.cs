@@ -21,6 +21,8 @@ namespace PhilosophersConsoleApp
 				new Mutex(),
 				new Mutex(),
 			};
+
+			Console.WriteLine($" We have { Environment.ProcessorCount} Processor \n");
 		}
 
 		static void Main(string[] args)
@@ -43,6 +45,7 @@ namespace PhilosophersConsoleApp
 				new Philosopher("Ornn"),
 				new Philosopher("Volibear"),
 			};
+			List<AutoResetEvent> evnets = new List<AutoResetEvent>();
 
 			// Invite them to sitting and having dinner
 			foreach (var philosopher in customers)
@@ -64,20 +67,26 @@ namespace PhilosophersConsoleApp
 			if (item is Model.Philosopher)
 			{
 				var philosopher = item as Model.Philosopher;
-				
-				for (int i = 0; i < DAYTIME; i++)
+				try
 				{
-					philosopher.PickLeftChopstick();
-					philosopher.PickRightChopstick();
-					philosopher.Eat();
-					philosopher.Release();
-					philosopher.Think();
-				}
+					for (int i = 0; i < DAYTIME; i++)
+					{
+						philosopher.PickLeftChopstick();
+						philosopher.PickRightChopstick();
+						philosopher.Eat();
+						philosopher.Release();
+						philosopher.Think();
+					}
+					philosopher.Finish();
 
-				Console.WriteLine($"{philosopher.PrintOffset}| Thread {philosopher.Id} Finished	|");
+				}
+				catch (ThreadAbortException e)
+				{
+					Console.WriteLine("Thread - caught ThreadAbortException - resetting.");
+					Console.WriteLine($"Exception message: {e.Message}");
+					Thread.ResetAbort();
+				}
 			}
 		}
-
-
 	}
 }

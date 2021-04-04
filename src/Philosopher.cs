@@ -8,7 +8,7 @@ namespace PhilosophersConsoleApp.Model
 		private const int MAX_THINKING_TIME = 2000;
 		private const int MAX_EATING_TIME = 500;
 
-		private const int MAX_WATING_TIME = 4000;
+		private const int MAX_WATING_TIME = 1000;
 
 		private const int MAX_CHOPSTICKS = 5;
 
@@ -24,9 +24,9 @@ namespace PhilosophersConsoleApp.Model
 
 		public int RightMutexIndex;
 		public Mutex RightMutex;
-		
+
 		private bool IsBothHandsWithaChopstick;
-		
+
 		#region CTOR
 		public Philosopher(string name)
 		{
@@ -51,7 +51,7 @@ namespace PhilosophersConsoleApp.Model
 				PrintOffset += "			";
 			}
 
-			Console.WriteLine($"Thread {Id} Now Online");
+			Console.WriteLine($" {Id}: {Name} has been invited");
 		}
 
 		public void InitSemaphores(Mutex leftMutex, Mutex rightMutex)
@@ -125,8 +125,13 @@ namespace PhilosophersConsoleApp.Model
 			{
 
 			}
-			
+
 			IsBothHandsWithaChopstick = false;
+		}
+
+		public void Finish()
+		{
+			Console.WriteLine($"{PrintOffset}| Thread {Id} Finish	|");
 		}
 		#endregion
 	}
